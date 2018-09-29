@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Title</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    .inner{
+      height: 150px;
+      background: darkcyan;
+    }
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <div class="inner" @click="div1Handler">
+    <input type="button"  value="戳他" @click.stop="btnHandler">
+  </div>
+
+  <a href="http://www.baidu.com" @click.prevent="linkClick">百度</a>
+
+  <div class="inner" @click.capture="div1Handler">
+    <input type="button"  value="戳他" @click="btnHandler">
+  </div>
+
+  <div class="inner" @click.self="div1Handler">
+    <input type="button"  value="戳他" @click="btnHandler">
+  </div>
+
+  <a href="http://www.baidu.com" @click.prevent.once="linkClick">百度</a>
+
+</div>
+
+<script>
+
+
+  var vm = new Vue({
+
+    el: '#app',
+    data: {},
+    methods: {
+      div1Handler(){
+        console.log('inner div的点击事件')
+      },
+      btnHandler(){
+        console.log('btn 点击事件')
+      },
+      linkClick(){
+        console.log('触发了百度链接的点击')
+      }
+    }
+  });
+
+</script>
+</body>
+</html>
